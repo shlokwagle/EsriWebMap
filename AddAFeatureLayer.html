@@ -1,0 +1,59 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>
+			Intro to FeatureLayer | Sample | ArcGIS Maps SDK for JavaScript 4.28
+		</title>
+
+		<link
+			rel="stylesheet"
+			href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
+		<script src="https://js.arcgis.com/4.28/"></script>
+
+		<style>
+			html,
+			body,
+			#viewDiv {
+				padding: 0;
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+
+		<script>
+			require(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer'], (
+				Map,
+				MapView,
+				FeatureLayer
+			) => {
+				const map = new Map({
+					basemap: 'hybrid',
+				});
+
+				const view = new MapView({
+					container: 'viewDiv',
+					map: map,
+				});
+
+				/********************
+				 * Add feature layer
+				 ********************/
+
+				// Carbon storage of trees in Warren Wilson College.
+				const featureLayer = new FeatureLayer({
+					url: 'https://services.arcgis.com/Wl7Y1m92PbjtJs5n/arcgis/rest/services/hundred_thousand_points/FeatureServer',
+				});
+
+				map.add(featureLayer);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="viewDiv"></div>
+	</body>
+</html>
